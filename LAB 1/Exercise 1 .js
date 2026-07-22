@@ -25,13 +25,18 @@ const toWords = (digit)=> {
     }
 }
 
-console.log(toWords(0));
-console.log(toWords(1));
-console.log(toWords(2));
-console.log(toWords(3));
-console.log (toWords(5));
-console.log (toWords(3));
-console.log (toWords(6));
+const toWords2 = (digit)=>{
+    const words =["Zero","One","two","three","Four","Six","Seven","Eight","Nine"];
+    return words[digit];
+}
+
+// console.log(toWords(0));
+// console.log(toWords(1));
+// console.log(toWords(2));
+// console.log(toWords(3));
+// console.log (toWords(5));
+// console.log (toWords(3));
+// console.log (toWords(6));
 
 
 // create another fn that take a no and show into word fn
