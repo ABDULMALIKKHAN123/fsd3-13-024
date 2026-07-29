@@ -9,7 +9,7 @@ it direct connect with clients OS rather than browser
 
 --Directory Management
   --mkdir()
-  --rmdir()
+  --rmdir() --depricated
   --readdir()
 
 --metadata/Information
