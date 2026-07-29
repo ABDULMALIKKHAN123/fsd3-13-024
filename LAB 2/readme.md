@@ -45,3 +45,5 @@ D--Delete/Remove
 fs--File System
   --1)node library
   --2)node library
+
+  unlink ke throgh file ko delete karte hai

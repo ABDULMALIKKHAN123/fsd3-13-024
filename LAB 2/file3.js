@@ -1,23 +1,25 @@
-// import { appendFile } from "fs";
-// import { readFile,writeFile } from "fs/promises";
+import { appendFile } from "fs";
+import { readFile,writeFile , unlink} from "fs/promises";
 
-// const writeData = async(fname,contents) =>{
-//     await writeFile(fname,contents);
-//     console.log('File written');
+const writeData = async(fname,contents) =>{
+    await writeFile(fname,contents);
+    console.log('File written');
     
 
-// };
-// const readData = async (fname) =>{
-//     const data = await readFile(fname,'utf-8');
-//     console.log('File contents');
-//     console.log(data);
-// };
+};
+const readData = async (fname) =>{
+    const data = await readFile(fname,'utf-8');
+    console.log('File contents');
+    console.log(data);
+};
 
-// // const appendData = async (fname) =>{
-// //     await appendFile(fname,"\n"+ contents)
-// // }
+const appendData = async (fname) =>{
+    await appendFile(fname,"\n"+ contents)
+}
 
 // await writeData("happy.txt","I am very happy");
 // await readData("happy.txt");
 // await appendData("happy.txt","FSD is Interesting");
 // await readData ("happy.txt");
+
+await deleteFile("happy.txt")
