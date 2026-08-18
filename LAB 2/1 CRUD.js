@@ -1,5 +1,5 @@
 import readline from 'readline/promises'
-import {writeFile,readFile } from"fs/promises:
+import {writeFile,readFile } from"fs/promises";
 
 import {stdin,stdout} from "process"
 import { from } from 'node:stream/iter'
@@ -7,7 +7,7 @@ import { from } from 'node:stream/iter'
 
 const FILE = "products.json"
 const savecart=(cart)=>{
-    await writeFile(FILE,JSON.stringify(cart,null,2));
+    await writeFile(FILE,JSON.stringly(cart,null(1,2)));
     
 };
 
@@ -18,6 +18,13 @@ const getcart = async()=>{
 };
 
 
+
+
+const addToCart = async(item)=>{
+    const products = await getcart();
+    products.push(item);
+    await savecart(products);
+}
 
 
 
