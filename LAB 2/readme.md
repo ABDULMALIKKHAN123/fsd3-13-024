@@ -47,3 +47,32 @@ fs--File System
   --2)node library
 
   unlink ke throgh file ko delete karte hai
+
+
+
+## CRUD Operation
+create/Insert, Read/Retrieve, update,Delete
+each item(id,name,price,qty)
+feature:
+1) add to cart
+2) slow cart
+3) Remove from cart
+4) update quantity from cart
+
+Required files
+->crud.js
+->product.json (Java Script Object Notation)
+
+## Item
+id, name, price,qty
+
+## Operation
+1) add to cart
+2) slow cart
+3) Remove from cart
+4) update quantity from cart
+5) checkout
+NOTE: all items will be stored in hdd, so after termination of program we can retrive cart detailes
+## Required File
+1. crud.js - it contains all the method and entry point
+2. 
