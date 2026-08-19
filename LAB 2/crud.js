@@ -87,6 +87,7 @@ import readline from "readline/promises";
 import { writeFile, readFile } from "fs/promises";
 
 import { stdin, stdout } from "process";
+import { log } from "console";
 
 const FILE = "products.json";
 
@@ -105,6 +106,19 @@ const addToCart = async (item) => {
   await saveCart(products);
 };
 
+const showCart = async () =>{
+     console.log("showCart");
+} 
+
+const updateCart = async () =>{
+      console.log("updateCart");
+}
+
+const deleteFromCart = async () =>{
+      console.log("deleteFromCart");
+}
+
+
 const main = async () => {
   const cin = readline.createInterface({ input: stdin, output: stdout });
   let choice;
@@ -118,17 +132,33 @@ const main = async () => {
     choice = await cin.question("Enter your choice:");
     switch (Number(choice)) {
       case 1:
-        await addToCart({ id: 101, name: "Mobile", price: 15000, qty: 3 });
-        console.log("add to cart");
+        let data = await cin.question('Enter id,name,price,qty:');
+        let p = data.split(",");
+        
+        let q = p.map((item)=>item.trim());
+        
+        let[id,name,price,qty]=q;
+        console.log(id,name,price,qty);
+        const product = {
+            id:Number(id),
+            name,
+            price:Number(price),
+            qty:Number(qty),
+        };
+        // console.log(product);
+        await addToCart(product);
+        
+
+        
         break;
       case 2:
-        console.log("show cart items");
+        showCart();
         break;
       case 3:
-        console.log("remove items");
+        deleteFromCart();
         break;
       case 4:
-        console.log("update quantity");
+        updateCart();
         break;
       case 5:
         console.log("See you later...😃");
