@@ -133,7 +133,7 @@ const deleteFromCart = async () =>{
 const main = async () => {
   const cin = readline.createInterface({ input: stdin, output: stdout });
   let choice;
-  do {
+  do 
     console.log("Welcome to shopping cart 🛍️");
     console.log("1 ------- Add to cart");
     console.log("2 ------- Show Cart");
