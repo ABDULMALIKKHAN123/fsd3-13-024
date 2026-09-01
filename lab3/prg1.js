@@ -1,3 +1,4 @@
+// server kaise banta hai
 import http from 'http';
 
 const server = http.createServer();
