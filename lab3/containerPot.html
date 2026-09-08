@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PlantMate - Smart Container Pot</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f4faf5;
+            color: #183b25;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 20px 8%;
+
+            background: white;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #278548;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        nav ul li a:hover {
+            color: #278548;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 90vh;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 60px 8%;
+            gap: 50px;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-content span {
+            color: #278548;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .hero-content h1 {
+            font-size: 60px;
+            line-height: 1.1;
+            margin: 18px 0;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: #607064;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 14px 26px;
+            border-radius: 30px;
+            border: none;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .primary {
+            background: #278548;
+            color: white;
+        }
+
+        .primary:hover {
+            background: #1d6737;
+        }
+
+        .secondary {
+            border: 2px solid #278548;
+            color: #278548;
+            background: transparent;
+        }
+
+        /* SMART POT */
+
+        .pot-area {
+            width: 400px;
+            height: 500px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            position: relative;
+        }
+
+        .plant {
+            position: absolute;
+            top: 30px;
+            z-index: 2;
+        }
+
+        .stem {
+            width: 10px;
+            height: 180px;
+            background: #39864b;
+            margin: auto;
+            border-radius: 10px;
+        }
+
+        .leaf {
+            position: absolute;
+            width: 80px;
+            height: 40px;
+            background: #43a85c;
+            border-radius: 80% 10% 80% 10%;
+        }
+
+        .leaf1 {
+            top: 55px;
+            left: -65px;
+            transform: rotate(-25deg);
+        }
+
+        .leaf2 {
+            top: 90px;
+            right: -65px;
+            transform: rotate(25deg);
+        }
+
+        .leaf3 {
+            top: 125px;
+            left: -55px;
+            transform: rotate(-15deg);
+        }
+
+        .pot {
+            width: 230px;
+            height: 180px;
+
+            position: absolute;
+            bottom: 80px;
+
+            background: linear-gradient(
+                90deg,
+                #d9783d,
+                #f0a15e,
+                #d9783d
+            );
+
+            border-radius: 20px 20px 65px 65px;
+
+            box-shadow: 15px 20px 35px rgba(0,0,0,0.2);
+        }
+
+        .pot-top {
+            width: 250px;
+            height: 45px;
+
+            position: absolute;
+            top: -20px;
+            left: -10px;
+
+            background: #70482f;
+            border-radius: 50%;
+        }
+
+        .display {
+            position: absolute;
+
+            width: 100px;
+            height: 48px;
+
+            left: 65px;
+            top: 70px;
+
+            background: #12351e;
+            color: #6cff91;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+            font-size: 18px;
+
+            box-shadow: inset 0 0 10px #000;
+        }
+
+        /* FEATURES */
+
+        .section {
+            padding: 80px 8%;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .section > p {
+            color: #68756b;
+            margin-bottom: 45px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: white;
+
+            padding: 35px 25px;
+
+            border-radius: 20px;
+
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: #667168;
+            line-height: 1.6;
+        }
+
+        /* PRODUCT */
+
+        .product {
+            background: #e5f6e8;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 80px 12%;
+
+            gap: 50px;
+        }
+
+        .product-info {
+            max-width: 550px;
+        }
+
+        .product-info h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .product-info p {
+            color: #617066;
+            line-height: 1.7;
+        }
+
+        .price {
+            font-size: 36px;
+            color: #278548;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .product-info ul {
+            list-style: none;
+            line-height: 2;
+            margin-bottom: 20px;
+        }
+
+        .product-info li::before {
+            content: "✓ ";
+            color: #278548;
+            font-weight: bold;
+        }
+
+        /* STATUS */
+
+        .status {
+            background: white;
+
+            padding: 50px 8%;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 20px;
+        }
+
+        .status-card {
+            padding: 25px;
+
+            text-align: center;
+
+            border-radius: 15px;
+
+            background: #f4faf5;
+
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+        }
+
+        .status-card h3 {
+            font-size: 28px;
+            color: #278548;
+        }
+
+        .status-card p {
+            margin-top: 8px;
+            color: #667168;
+        }
+
+        /* CTA */
+
+        .cta {
+            text-align: center;
+
+            padding: 90px 20px;
+
+            background: #278548;
+
+            color: white;
+        }
+
+        .cta h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            margin-bottom: 25px;
+        }
+
+        .cta .btn {
+            background: white;
+            color: #278548;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #12351e;
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+        }
+
+        /* MOBILE */
+
+        @media(max-width: 800px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 42px;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .product {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .status {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width: 450px) {
+
+            .pot-area {
+                width: 300px;
+            }
+
+            .status {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            🌱 PlantMate
+        </div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#product">Product</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <span>SMART PLANT CARE SYSTEM</span>
+
+            <h1>
+                Grow Smarter.<br>
+                Live Greener.
+            </h1>
+
+            <p>
+                PlantMate is a smart container pot that monitors
+                soil moisture, temperature and plant health while
+                helping you provide the right amount of water.
+            </p>
+
+            <div class="buttons">
+
+                <a href="#product" class="btn primary">
+                    Explore Pot
+                </a>
+
+                <a href="#features" class="btn secondary">
+                    View Features
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- SMART POT -->
+
+        <div class="pot-area">
+
+            <div class="plant">
+
+                <div class="stem"></div>
+
+                <div class="leaf leaf1"></div>
+                <div class="leaf leaf2"></div>
+                <div class="leaf leaf3"></div>
+
+            </div>
+
+
+            <div class="pot">
+
+                <div class="pot-top"></div>
+
+                <div class="display" id="moisture">
+                    72% Moist
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+
+    <section class="section" id="features">
+
+        <h2>Smart Plant Features</h2>
+
+        <p>
+            Technology that makes plant care simple.
+        </p>
+
+
+        <div class="features">
+
+
+            <div class="feature-card">
+
+                <div class="icon">💧</div>
+
+                <h3>Auto Watering</h3>
+
+                <p>
+                    Automatically provides water when the
+                    soil becomes too dry.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="icon">🌡️</div>
+
+                <h3>Temperature Sensor</h3>
+
+                <p>
+                    Monitor the temperature around your plant
+                    for better growing conditions.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="icon">🌱</div>
+
+                <h3>Soil Monitoring</h3>
+
+                <p>
+                    Smart sensors continuously monitor
+                    soil moisture levels.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="icon">📱</div>
+
+                <h3>Mobile App</h3>
+
+                <p>
+                    Check your plant's condition directly
+                    from your smartphone.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="icon">🔔</div>
+
+                <h3>Smart Alerts</h3>
+
+                <p>
+                    Receive alerts when your plant needs
+                    water or attention.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="icon">🔋</div>
+
+                <h3>Low Power</h3>
+
+                <p>
+                    Designed for efficient energy usage
+                    and long-lasting operation.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PRODUCT -->
+
+    <section class="product" id="product">
+
+        <div class="product-info">
+
+            <h2>PlantMate Smart Pot</h2>
+
+            <p>
+                Give your plants intelligent care with a
+                connected container pot designed for modern homes,
+                offices and students.
+            </p>
+
+            <div class="price">
+                ₹2,499
+            </div>
+
+            <ul>
+
+                <li>Smart Soil Moisture Sensor</li>
+                <li>Automatic Watering System</li>
+                <li>Temperature Monitoring</li>
+                <li>LED Smart Display</li>
+                <li>Mobile App Support</li>
+                <li>Rechargeable Battery</li>
+
+            </ul>
+
+            <button class="btn primary" onclick="buyPot()">
+                Buy Now
+            </button>
+
+        </div>
+
+
+        <div class="pot-area">
+
+            <div class="plant">
+
+                <div class="stem"></div>
+
+                <div class="leaf leaf1"></div>
+                <div class="leaf leaf2"></div>
+                <div class="leaf leaf3"></div>
+
+            </div>
+
+
+            <div class="pot">
+
+                <div class="pot-top"></div>
+
+                <div class="display">
+                    🌱 READY
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LIVE STATUS -->
+
+    <section class="section">
+
+        <h2>Live Plant Status</h2>
+
+        <p>
+            Example smart sensor readings
+        </p>
+
+    </section>
+
+
+    <section class="status">
+
+        <div class="status-card">
+
+            <h3 id="soil">
+                72%
+            </h3>
+
+            <p>
+                Soil Moisture
+            </p>
+
+        </div>
+
+
+        <div class="status-card">
+
+            <h3 id="temp">
+                25°C
+            </h3>
+
+            <p>
+                Temperature
+            </p>
+
+        </div>
+
+
+        <div class="status-card">
+
+            <h3>
+                85%
+            </h3>
+
+            <p>
+                Plant Health
+            </p>
+
+        </div>
+
+
+        <div class="status-card">
+
+            <h3>
+                ON
+            </h3>
+
+            <p>
+                Smart System
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section class="cta" id="contact">
+
+        <h2>
+            Give Your Plant a Smarter Home
+        </h2>
+
+        <p>
+            Let technology take care of your plants.
+        </p>
+
+        <button class="btn" onclick="buyPot()">
+            Get PlantMate
+        </button>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 PlantMate. Smart Plant Care.
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        function buyPot() {
+
+            alert(
+                "🌱 Thank you for choosing PlantMate!\n\n" +
+                "Your smart pot order has been started."
+            );
+
+        }
+
+
+        // Simulate changing soil moisture
+
+        let moisture = 72;
+
+        setInterval(function() {
+
+            moisture += Math.random() > 0.5 ? 1 : -1;
+
+            if (moisture > 90) {
+                moisture = 90;
+            }
+
+            if (moisture < 50) {
+                moisture = 50;
+            }
+
+            document.getElementById("soil").innerText =
+                moisture + "%";
+
+            document.getElementById("moisture").innerText =
+                moisture + "% Moist";
+
+        }, 2500);
+
+
+        // Simulate temperature
+
+        let temp = 25;
+
+        setInterval(function() {
+
+            temp += Math.random() > 0.5 ? 1 : -1;
+
+            document.getElementById("temp").innerText =
+                temp + "°C";
+
+        }, 3500);
+
+    </script>
+
+
+</body>
+</html>
