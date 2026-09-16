@@ -5,35 +5,48 @@ const server = http.createServer((req, res) => {
   if (req.url === '/' && req.method === 'GET') {
 
     res.statusCode = 200;
-    res.end("GET request");
+    res.end("GET Request");
 
   }
 
   else if (req.url === '/' && req.method === 'POST') {
+    // console.log("Request:",req);
+       let body ='';
+       req.on('data',(chunk)=>{
+        body += chunk;
+       })
+       req.on("end",()=>{
+        const product = JSON.parse(body);
+        console.log("received product:", product);
+        res.statusCode = 201;
+        res.end(JSON.stringify({msg:'product added',product}));
+        
+       });
 
-    res.statusCode = 200;
-    res.end("POST request");
+
+
+    
 
   }
 
   else if (req.url === '/' && req.method === 'PUT') {
 
     res.statusCode = 200;
-    res.end("PUT request");
+    res.end("PUT Request");
 
   }
 
   else if (req.url === '/' && req.method === 'DELETE') {
 
     res.statusCode = 200;
-    res.end("DELETE request");
+    res.end("DELETE Request");
 
   }
 
   else {
 
     res.statusCode = 404;
-    res.end("request not found");
+    res.end("Request not found");
 
   }
 
