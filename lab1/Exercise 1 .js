@@ -32,13 +32,13 @@ const toWords2 = (digit)=>{
 
 
 // switch ke alawa👇
-console.log(toWords(0));
-console.log(toWords(1));
-console.log(toWords(2));
-console.log(toWords(3));
-console.log (toWords(5));
-console.log (toWords(3));
-console.log (toWords(6));
+// console.log(toWords(0));
+// console.log(toWords(1));
+// console.log(toWords(2));
+// console.log(toWords(3));
+// console.log (toWords(5));
+// console.log (toWords(3));
+// console.log (toWords(6));
 // switch ke alawa 👆
 
 

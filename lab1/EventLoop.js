@@ -66,6 +66,12 @@ const main = () => {
         console.log("I am promise2");
         resolve();
     });
+
+    new Promise((resolve, reject) => {
+        console.log("I am promise3");
+        resolve();
+    });
+
 };
 
 main();
