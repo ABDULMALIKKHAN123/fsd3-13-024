@@ -76,7 +76,7 @@
 // 👇 sir ka code hai
 
 import http from "http";
-import { getAllProducts } from "../products.js";
+import { getAllProducts,addProducts } from "../products.js";
 import { count } from "console";
 
 const server = http.createServer((req, res) => {
@@ -92,7 +92,7 @@ const server = http.createServer((req, res) => {
     }),
   );
   } 
-  
+
   
   else if (req.url === "/api/v1/products" && req.method === "POST") {
     // console.log("Request:",req);
@@ -102,9 +102,12 @@ const server = http.createServer((req, res) => {
     });
     req.on("end", () => {
       const product = JSON.parse(body);
-      console.log("received product:", product);
+      // console.log("received product:", product);
+      const item = addProducts(product);
       res.statusCode = 201;
-      res.end(JSON.stringify({ msg: "product added", product }));
+      res.end(JSON.stringify({ msg: "product added", data:item
+        
+       }));
     });
   } 
   
