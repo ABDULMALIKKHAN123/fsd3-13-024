@@ -76,7 +76,7 @@
 // 👇 sir ka code hai
 
 import http from "http";
-import { getAllProducts,addProducts } from "../products.js";
+import { getAllProducts,addProducts, deleteProducts } from "../products.js";
 import { count } from "console";
 
 const server = http.createServer((req, res) => {
@@ -106,7 +106,7 @@ const server = http.createServer((req, res) => {
       const item = addProducts(product);
       res.statusCode = 201;
       res.end(JSON.stringify({ msg: "product added", data:item
-        
+
        }));
     });
   } 
@@ -127,13 +127,25 @@ const server = http.createServer((req, res) => {
     
   } 
   
-  else if (req.url === "/" && req.method === "DELETE") {
+  else if (req.url.startsWith("/api/v1/products/")&& req.method === "DELETE") {
+    const pid = Number(req.url.split('/').pop());
+
+
     res.statusCode = 200;
-    res.end("DELETE Request");
-  } else {
+    // res.end("DELETE Request");
+
+    if(deleteProducts(pid)){
+      res.end(JSON.stringify({msg:'item deleted'}));
+
+  }
+  else{
+    res.end(JSON.stringify({msg:`products with id $(pid) not found`}));
+  }
+}
+else {
     res.statusCode = 404;
     res.end("request not found");
-  }
+}
 });
 
 server.listen(5000, () => console.log("prg6 is running"));

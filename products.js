@@ -10,9 +10,24 @@ export const getAllProducts = ()=>{
     return products;
 }
 
+// Dusra function banaya add products ke liye
 export const addProducts = (item)=>{
     item.id = nextId;
     nextId++;
     products.push(item);
     return item;
 };
+
+
+// tisra function banaya products ko delete karne ke liye
+export const deleteProducts = (pid) =>{
+    const item = products.findIndex((prd)=>prd.id===pid);
+    if(item == -1)
+        return false;
+    products.splice("products remaining:",products)
+    return true;
+
+};
+
+
+
