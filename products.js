@@ -1,55 +1,45 @@
 const products = [
-    {id:1,name:'marker',qty:100,price:15},
-    {id:2,name:'pen',qty:100,price:10},
-]
+  { id: 1, name: "marker", qty: 100, price: 15 },
+  { id: 2, name: "duster", qty: 50, price: 10 },
+];
 
 let nextId = 3;
 
-// function banaya 
-export const getAllProducts = ()=>{
-    return products;
-}
-
-// Dusra function banaya add products ke liye
-export const addProducts = (item)=>{
-    item.id = nextId;
-    nextId++;
-    products.push(item);
-    return item;
+export const getAllProducts = () => {
+  return products;
 };
 
-
-// tisra function banaya products ko delete karne ke liye
-export const deleteProducts = (pid) =>{
-    const item = products.findIndex((prd)=>prd.id===pid);
-    if(item == -1)
-        return false;
-    products.splice("products remaining:",products)
-    return true;
-
+export const addProduct = (item) => {
+  item.id = nextId;
+  nextId++;
+  products.push(item);
+  return item;
 };
 
-// Create a function to update any products even pid call this function into prg6.js and verify its working by echo api 
+export const deleteProduct = (pid) => {
+  const item = products.findIndex((prd) => prd.id === pid);
+  if (item == -1) return false;
+  products.splice(item, 1);
+  console.log("products remaining:", products);
+  return true;
+};
 
-export const updateProducts = (pid,updateItem) =>{
-    const item = products.findIndex((prd)=>prd.id===pid);
+export const updateProduct = (pid, updateItem) => {
+  const index = products.findIndex((prd) => prd.id === pid);
 
-    if(index == -1){
-        return false;
-    }
-    updateItem.id = pid
-       products[index] = updateItem;
-       return updateItem;
+  if (index == -1) {
+    return false;
+  }
+  updateItem.id = pid;
+  products[index] = updateItem;
+  return updateItem;
+};
 
-    };
+export const getProductById = (pid) => {
+  const index = products.findIndex((prd) => prd.id === pid);
 
-
-export const getProductById = (pid) =>{
-    const index = products.findIndex((prd)=>prd.id===pid);
-
-    if(index == -1){
-        return false;
-    }
-    return products[index];
-
+  if (index == -1) {
+    return false;
+  }
+  return products[index];
 };
