@@ -99,3 +99,12 @@ it is used to tell the client ,the type of data sent by the server. it may be ht
 5. application/form-data -> for uploading file
 6. application/auth -> for tokens
 the headers can be set by res object at server sisde 
+
+## GET 
+- No parameter will passed to the server when be recievd all icon 
+## POST
+- To add records we pass the value from body section in JSON formate of api tester(echo api)
+## DELETE
+- To delete any product we passed parameter ie. ID of the product from url
+## UPDATE (Put or Patch)
+- To update any product we passed ID from url and data to update from body 
