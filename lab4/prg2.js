@@ -13,7 +13,7 @@ const dirname = path.dirname(filename)
 // });
 
 app.get("/",(req,res)=>{
-    res.sendFile(path.join(dirname,"Public","about.html"));
+    res.sendFile(path.join(dirname,"htmlPages","about.html"));
 });
 
 
