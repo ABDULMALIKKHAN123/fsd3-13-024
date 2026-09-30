@@ -16,3 +16,23 @@
 
 9. Send method/function is used to revert back contents to the client it may be html,json,html file, plain text 
 10. you can also status code with status function it can be change with send function
+## Map
+This function is used to iterate any array it must return new array
+```
+array.map((item)=>{
+   return
+})
+
+array.map((item)=>())
+```
+
+1. in syntax 1 we have to use explicit return function whereas not required in 2nd syntax
+2. exclude number of properties from any json object
+```
+const {p1,p2,p3,...rest} = product;
+log(rest);
+```
+3. Search - To search any item in json array we use find method it will return NULL on unsuccessful or object on Successful
+```
+array.find((item)=>item.id===id);
+```
