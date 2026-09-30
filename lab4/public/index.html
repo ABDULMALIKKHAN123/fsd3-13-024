@@ -2,15 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>Feedback | BrightPath</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration | BrightPath Tuition Classes</title>
     <style>
       * {
         box-sizing: border-box;
       }
       body {
         margin: 0;
-        font-family: Arial;
+        font-family: Arial, sans-serif;
         background: #f4f7fb;
         color: #1f2937;
       }
@@ -29,8 +29,8 @@
         color: #ffd166;
       }
       .hero {
+        padding: 45px 20px;
         text-align: center;
-        padding: 40px;
         background: #e8f1ff;
       }
       .card {
@@ -55,10 +55,6 @@
         border: 1px solid #ccd5e0;
         border-radius: 7px;
       }
-      textarea {
-        height: 130px;
-        resize: vertical;
-      }
       button {
         margin-top: 20px;
         width: 100%;
@@ -67,14 +63,15 @@
         border-radius: 7px;
         background: #173b6c;
         color: white;
+        font-size: 16px;
         font-weight: bold;
       }
       footer {
+        margin-top: 40px;
         background: #102a4c;
         color: white;
         text-align: center;
         padding: 25px;
-        margin-top: 40px;
       }
       footer a {
         color: white;
@@ -91,29 +88,37 @@
       ><a href="prices.html">Price Details</a>
     </nav>
     <section class="hero">
-      <h1>Student Feedback</h1>
-      <p>Your feedback helps us improve our classes.</p>
+      <h1>Student Registration</h1>
+      <p>Join BrightPath Tuition Classes and start learning with confidence.</p>
     </section>
     <div class="card">
       <form>
-        <label>Name</label
-        ><input type="text" placeholder="Your name" required /><label
-          >Course</label
+        <label>Full Name</label
+        ><input type="text" placeholder="Enter your name" required />
+        <label>Email</label
+        ><input type="email" placeholder="Enter your email" required />
+        <label>Phone Number</label
+        ><input type="tel" placeholder="Enter your phone number" required />
+        <label>Class / Grade</label
         ><select>
+          <option>Select class</option>
+          <option>6th</option>
+          <option>7th</option>
+          <option>8th</option>
+          <option>9th</option>
+          <option>10th</option>
+          <option>11th</option>
+          <option>12th</option>
+        </select>
+        <label>Preferred Course</label
+        ><select>
+          <option>Select course</option>
           <option>Mathematics</option>
           <option>Science</option>
           <option>English</option>
-          <option>Computer Science</option></select
-        ><label>Rating</label
-        ><select>
-          <option>★★★★★ Excellent</option>
-          <option>★★★★ Very Good</option>
-          <option>★★★ Good</option>
-          <option>★★ Needs Improvement</option>
-          <option>★ Poor</option></select
-        ><label>Your Feedback</label
-        ><textarea placeholder="Write your feedback..."></textarea
-        ><button type="submit">Submit Feedback</button>
+          <option>Computer Science</option>
+        </select>
+        <button type="submit">Register Now</button>
       </form>
     </div>
     <footer>
@@ -121,6 +126,7 @@
       <p>
         <a href="#">ⓕ</a><a href="#">𝕏</a><a href="#">◎</a><a href="#">▶</a>
       </p>
+      <p>Learn • Grow • Succeed</p>
     </footer>
   </body>
 </html>
