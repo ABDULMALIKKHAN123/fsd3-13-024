@@ -33,8 +33,10 @@ app.get("/api/products/query",(req,res)=>{
         )
      }
 
+    
 
-     
+
+
      if(search){
         sortedProducts = sortedProducts.filter((item)=>item.name.toLowerCase().startsWith(search.toLowerCase()),
         
@@ -80,9 +82,25 @@ app.get("/api/products/:id",(req,res)=>{
     // res.send(`will show product id:, ${id}`);
 });
 
+app.get("/api/products/:id/reviews/",(req,res)=>{
+     res.send("return all reviews for products id")
+})
 
+app.get("/api/products/:id/reviews/:revid",(req,res)=>{
+    const {id,revid} = req.params;
+    const product = products.find((item)=>item.id===Number(id));
+    if(!product){
+        res.send(`product not found with id ${id}`);
+        return;
 
-
+}
+review = product.reviews.find((item)=>item.id===Number(revid));
+if(!review){
+    res.send(`review not found with id ${revid}`);
+    return;
+}
+return res.status(200).send(review);
+});
 app.use((req,res)=>{
     res.status(404).send("Route not found");
 });
